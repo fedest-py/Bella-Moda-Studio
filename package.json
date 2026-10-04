@@ -1,0 +1,15 @@
+{
+  "name": "bella-moda-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bella Moda Studio — Sample Sale + Boutique in Astoria",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs --dist",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test"
+  }
+}

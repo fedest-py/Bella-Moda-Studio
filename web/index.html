@@ -26,9 +26,9 @@
   <meta property="og:url" content="{{SITE_URL}}/">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%231A7F8E'/%3E%3Ctext x='24' y='36' text-anchor='middle' font-family='Georgia,serif' font-size='39' fill='%23F3E6D2'%3EB%3C/text%3E%3C/svg%3E">
   <link rel="preload" as="image" href="assets/entrance-1280.webp" imagesrcset="assets/entrance-640.webp 640w, assets/entrance-1280.webp 1086w" imagesizes="(max-width: 760px) 92vw, 49vw" fetchpriority="high">
-  <link rel="stylesheet" href="assets/site.css?v=4">
-  <script src="assets/store-data.js?v=3" defer></script>
-  <script src="assets/site.js?v=3" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=5">
+  <script src="assets/store-data.js?v=4" defer></script>
+  <script src="assets/site.js?v=4" defer></script>
   <script src="assets/google-profile.js?v=3" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ClothingStore","name":"Bella Moda Studio","url":"{{SITE_URL}}/","description":"Sample Sale + Boutique in Astoria, Queens.","telephone":"+18624528098","address":{"@type":"PostalAddress","streetAddress":"29-09 Ditmars Boulevard","addressLocality":"Astoria","addressRegion":"NY","postalCode":"11105","addressCountry":"US"}}</script>
   <script src="/assets/analytics.js?v=1" defer></script>
@@ -40,6 +40,7 @@
     <nav aria-label="Main navigation">
       <a class="nav-story" href="#story">Our story</a>
       <a href="#look">Take a look</a>
+      <a class="nav-signup" href="#newsletter">Join our list</a>
       <a class="nav-visit" href="#visit">Visit Bella</a>
     </nav>
   </header>
@@ -99,7 +100,7 @@
       <div class="section-heading reveal"><div><p class="eyebrow">A CLOSER LOOK</p><h2 id="look-title">Consider this<br><em>your walk-in.</em></h2></div><p>Browse the racks. Find your color.<br>Try something a little different.</p></div>
       <div class="editorial-gallery">
         <figure class="editorial-image image-one reveal">
-          <button type="button" class="gallery-photo" data-photo="3" aria-label="Enlarge photo of the gold mirror and fuchsia mannequin"><img src="assets/mirror-1280.webp" srcset="assets/mirror-640.webp 640w, assets/mirror-1280.webp 1122w" sizes="(max-width: 760px) 88vw, 34vw" width="1122" height="1402" loading="lazy" alt="A gold-framed full-length mirror and fuchsia mannequin against a deep blue wall"><span class="enlarge" aria-hidden="true">+</span></button>
+          <button type="button" class="gallery-photo" data-photo="3" aria-label="Enlarge photo of the gold mirror and fuchsia mannequin"><img src="assets/mirror-1280.webp?v=2" srcset="assets/mirror-640.webp?v=2 640w, assets/mirror-1280.webp?v=2 1086w" sizes="(max-width: 760px) 88vw, 34vw" width="1086" height="1448" loading="lazy" alt="A fuchsia mannequin wearing a brown coat beside a gold-framed mirror against a deep blue wall"><span class="enlarge" aria-hidden="true">+</span></button>
           <figcaption><span class="caption-number">01</span>Be classy, Be chic.</figcaption>
         </figure>
         <figure class="editorial-image image-two reveal">
@@ -163,9 +164,28 @@
         </div>
       </div>
     </section>
+
+    <section class="newsletter wrap" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter-copy">
+        <p class="eyebrow">A LITTLE MORE BELLA</p>
+        <h2 id="newsletter-title">Good finds.<br><em>First to your inbox.</em></h2>
+        <p>Join our list for new arrivals, sample sales, and special offers.</p>
+      </div>
+      <div class="newsletter-signup">
+        <form class="newsletter-form" action="https://squareup.com/outreach/aRLx7L/subscribe" method="POST" target="_blank" rel="noopener noreferrer" aria-label="Join Bella Moda Studio's email list">
+          <label for="newsletter-email">Email address</label>
+          <div class="newsletter-fields">
+            <input id="newsletter-email" type="email" name="email_address" placeholder="Your email address" autocomplete="email" inputmode="email" required aria-describedby="newsletter-note">
+            <input type="hidden" name="embed" value="true">
+            <button class="button" type="submit">Join our list<span class="sr-only"> (opens Square in a new tab)</span></button>
+          </div>
+          <p class="newsletter-note" id="newsletter-note">Sign up for emails from Bella Moda Studio. Unsubscribe anytime. Signup continues on Square in a new tab. <a href="information.html">Privacy details</a></p>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer wrap"><a class="footer-name" href="#top">BELLA <span>MODA STUDIO</span></a><p>Sample Sale + Boutique<br><span>Astoria, New York</span></p><a class="text-link" href="#top">Back to top</a><small>© <span id="year">2026</span> Bella Moda Studio <a href="information.html">Privacy & website terms</a></small></footer>
+  <footer class="site-footer wrap"><a class="footer-name" href="#top">BELLA <span>MODA STUDIO</span></a><p>Sample Sale + Boutique<br><span>Astoria, New York</span></p><div class="footer-links"><a class="text-link" href="https://www.instagram.com/bella.modastudio/" target="_blank" rel="noopener noreferrer">Instagram · @bella.modastudio<span class="sr-only"> (opens in a new tab)</span></a><a class="text-link" href="#top">Back to top</a></div><small>© <span id="year">2026</span> Bella Moda Studio <a href="information.html">Privacy & website terms</a></small></footer>
 
   <dialog class="photo-dialog" aria-label="Store photo gallery" aria-describedby="lightbox-caption">
     <div class="lightbox-toolbar"><span>BELLA, UP CLOSE</span><button type="button" class="lightbox-close" autofocus>Close <span aria-hidden="true">×</span></button></div>

@@ -3,6 +3,6 @@ window.BELLA_STORE = {
   hours: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(days => ({ days, time: '11 AM–7 PM' })),
   phone: '(862) 452-8098',
   email: null,
-  instagram: null,
+  instagram: 'https://www.instagram.com/bella.modastudio/',
   poshmark: null
 };

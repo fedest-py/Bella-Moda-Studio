@@ -54,7 +54,7 @@
     {name:'entrance', caption:'A first look inside', alt:'The entrance to Bella Moda Studio, with clothing racks and floral accents'},
     {name:'handbags', caption:'Color in the details', alt:'Colorful handbags on yellow and black display plinths'},
     {name:'collection', caption:'The joy of the find', alt:'Clothing racks and chandeliers inside Bella Moda Studio'},
-    {name:'mirror', caption:'Be classy, Be chic.', alt:'A gold mirror and fuchsia mannequin against a deep blue wall'},
+    {name:'mirror', caption:'Be classy, Be chic.', alt:'A fuchsia mannequin wearing a brown coat beside a gold mirror against a deep blue wall'},
     {name:'outerwear', caption:'Layers to love', alt:'A selection of coats and outerwear in the store'},
     {name:'accessories', caption:'Make it a statement.', alt:'Handbags, jewelry, and accessories in a glass display cabinet'},
     {name:'storefront', caption:'Meet us on Ditmars', alt:'Bella Moda Studio at 29-09 Ditmars Boulevard in Astoria'},
@@ -66,7 +66,7 @@
   function displayPhoto(index) {
     currentPhoto = (index + photos.length) % photos.length;
     const photo = photos[currentPhoto];
-    lightboxImage.src = `assets/${photo.name}-1280.webp`;
+    lightboxImage.src = `assets/${photo.name}-1280.webp${photo.name === 'mirror' ? '?v=2' : ''}`;
     lightboxImage.alt = photo.alt;
     document.querySelector('#lightbox-caption').textContent = photo.caption;
     document.querySelector('#lightbox-count').textContent = `${currentPhoto + 1} / ${photos.length}`;

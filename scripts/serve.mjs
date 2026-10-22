@@ -6,7 +6,7 @@ import {onRequest} from '../functions/api/google-profile.js';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const directory = resolve(root, process.argv.includes('--dist') ? 'dist' : 'web');
 const port = Number(process.env.PORT || 4173);
-const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.webp':'image/webp','.svg':'image/svg+xml','.xml':'application/xml','.txt':'text/plain; charset=utf-8','.json':'application/json'};
+const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.webp':'image/webp','.avif':'image/avif','.svg':'image/svg+xml','.xml':'application/xml','.txt':'text/plain; charset=utf-8','.json':'application/json'};
 createServer(async (req,res) => {
   try {
     const url = new URL(req.url, `http://localhost:${port}`);

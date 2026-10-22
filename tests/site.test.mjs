@@ -26,6 +26,15 @@ test('all bundled photographs and logo are nonempty WebP assets',async()=>{
   assert.equal(images.length,17);
   for(const path of images){const bytes=await readFile(path);assert.equal(bytes.toString('ascii',0,4),'RIFF');assert.equal(bytes.toString('ascii',8,12),'WEBP');assert.ok(bytes.length>1000);}
 });
+test('responsive AVIF alternatives are valid assets and the closed gallery does not fetch a full photograph',async()=>{
+  const alternatives=(await files(resolve(root,'assets'))).filter(p=>extname(p)==='.avif');
+  assert.ok(alternatives.length>0);
+  for(const path of alternatives){const bytes=await readFile(path);assert.equal(bytes.toString('ascii',4,12),'ftypavif',path);assert.ok(bytes.length>500);}
+  assert.ok(html.includes('as="image" type="image/avif"'));
+  const placeholder=html.match(/<img id="lightbox-image"[^>]+>/)[0];
+  assert.ok(placeholder.includes('src="data:image/'));
+  assert.ok(!placeholder.includes('assets/'));
+});
 test('current copy, map, contact and slideshow controls are preserved',()=>{
   for(const text of ['Every day.','That’s passion for fashion.','Consider this','your walk-in.','Be classy, Be chic.','Make it a statement.','Sample Sale + Boutique']) assert.ok(html.includes(text),text);
   assert.equal((html.match(/class="hours-row"/g)||[]).length,7);

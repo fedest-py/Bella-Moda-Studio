@@ -6,7 +6,7 @@ The canonical, standalone website for Bella Moda Studio, Sample Sale + Boutique 
 
 ## Architecture
 
-Dependency-free static HTML, CSS and JavaScript, with a Node.js build script and one optional Cloudflare Pages Function. No frontend framework or external font service is needed. All 17 WebP photographs/logo files are bundled. The original system-font stacks, stylesheet, client interactions, content order and responsive breakpoints are preserved.
+Dependency-free static HTML, CSS and JavaScript, with a Node.js build script and one optional Cloudflare Pages Function. No frontend framework or external font service is needed. All 17 original WebP photographs/logo files are bundled, with responsive AVIF alternatives for delivery. The original system-font stacks, stylesheet, client interactions, content order and responsive breakpoints are preserved. The full-size photo viewer still loads the original WebP photos only when opened.
 
 - `web/`: editable pages, local images, styles and browser scripts.
 - `functions/api/google-profile.js`: optional server-side Google Places endpoint.

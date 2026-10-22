@@ -1,8 +1,11 @@
 # Astoria SEO implementation — October 22, 2026
 
 Scope: the single Astoria–Ditmars store. The website remains at
-https://bellamodastudionyc.com. No other store, location page, design, font,
-stylesheet, or photograph was added or changed.
+https://bellamodastudionyc.com. No other store or location page was added.
+The existing design, fonts, stylesheet, and original photographs are preserved.
+
+Original WebP photographs are unchanged. Smaller AVIF delivery versions were
+subsequently added to reduce transfers while preserving the same photographs.
 
 ## Audit findings
 
@@ -45,10 +48,14 @@ stylesheet, or photograph was added or changed.
   hours, obsolete regular-hours markup is removed from the rendered page.
 - Added regression coverage for the deployment-origin bug and the single
   Astoria entity, hours, indexability, and heading hierarchy.
+- Added AVIF picture sources with 640/full-width candidates, accurate
+  hero image sizing, lower priority for inactive slides, and smaller logo
+  delivery. The existing WebP images remain as fallbacks. The full-size
+  gallery now waits until opened before fetching its original photo.
 
 ## Verification and limits
 
-- `npm run check`: all 12 tests passed before commit. This includes the
+- `npm run check`: all 13 tests passed after image delivery changes. This includes the
   build, image/link checks, existing API/analytics tests, and a regression
   build with conflicting preview/stale environment URLs.
 - Browser review of the local homepage confirmed the existing layout,
@@ -61,9 +68,20 @@ stylesheet, or photograph was added or changed.
   Google-selected canonical, sitemap submission, and organic performance
   require access to the owner's verified property. Serving a sitemap and
   listing it in robots.txt do not establish Search Console submission.
-- Rich Results Test and a mobile lab test must be checked against the live
-  domain after the production build is available. No mobile performance or
-  Core Web Vitals pass is asserted by these source checks.
+- Cloudflare successfully deployed the SEO change (`c42c215`), and the live
+  homepage, robots.txt, and sitemap were checked: all use the business domain.
+- Google's smartphone Rich Results Test crawled the live homepage successfully
+  and detected one valid Local Business item and one valid Organization item
+  from the same ClothingStore entity. There were no critical errors. Its
+  only Local Business warning was the optional `priceRange` field; no
+  unverified price range was invented to suppress that warning.
+  [Test result](https://search.google.com/test/rich-results/result?id=8rpAB9dKkVz7vRPvcrfKMg).
+- The initial mobile PageSpeed test scored 63 performance, 100 accessibility,
+  100 best practices, and 100 basic SEO, with 8.1-second LCP, 80-ms TBT, and
+  zero CLS under simulated slow 4G. Its image-delivery finding prompted the
+  AVIF/responsive and gallery-fetch changes above. A new live report is
+  required after those delivery changes deploy. No field Core Web Vitals
+  pass is asserted: PageSpeed did not have sufficient real-user data.
 
 ## Remaining account-level checks
 

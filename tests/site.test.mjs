@@ -38,10 +38,16 @@ test('responsive AVIF alternatives are valid assets and the closed gallery does 
 test('current copy, map, contact and slideshow controls are preserved',()=>{
   for(const text of ['Every day.','That’s passion for fashion.','Consider this','your walk-in.','Be classy, Be chic.','Make it a statement.','Sample Sale + Boutique']) assert.ok(html.includes(text),text);
   assert.equal((html.match(/class="hours-row"/g)||[]).length,7);
-  const frame=html.match(/<iframe[^>]+src="([^"]+)"/);assert.ok(frame);
+  const frame=html.match(/<iframe[^>]+data-src="([^"]+)"/);assert.ok(frame);
   const map=new URL(decode(frame[1]));assert.equal(map.hostname,'www.google.com');assert.equal(map.searchParams.get('output'),'embed');assert.equal(map.searchParams.get('q'),'29-09 Ditmars Boulevard, Astoria, NY 11105');
+  assert.ok(html.includes('<noscript><iframe'), 'The map still works without JavaScript');
   assert.ok(html.includes('href="tel:+18624528098"'));
   for(const value of ['data-go-slide="0"','data-go-slide="1"','data-go-slide="2"','play-toggle','lightbox-next','lightbox-previous','lightbox-close']) assert.ok(html.includes(value),value);
+});
+test('the homepage inlines the unchanged stylesheet to avoid a render-blocking request',async()=>{
+  const css=await readFile(resolve(root,'assets/site.css'),'utf8');
+  assert.ok(html.includes(`<style>${css}</style>`));
+  assert.ok(!/<link[^>]+rel="stylesheet"/.test(html));
 });
 test('metadata has a standalone origin and no unresolved placeholders',()=>{
   assert.ok(!html.includes('{{SITE_URL}}'));

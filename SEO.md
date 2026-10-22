@@ -52,10 +52,14 @@ subsequently added to reduce transfers while preserving the same photographs.
   hero image sizing, lower priority for inactive slides, and smaller logo
   delivery. The existing WebP images remain as fallbacks. The full-size
   gallery now waits until opened before fetching its original photo.
+- Inlined the unchanged homepage stylesheet in production and deferred the
+  embedded map until its location container approaches the viewport. The
+  same map remains available without JavaScript, and contact information
+  and directions links remain directly crawlable HTML.
 
 ## Verification and limits
 
-- `npm run check`: all 13 tests passed after image delivery changes. This includes the
+- `npm run check`: all 16 tests passed after delivery changes. This includes the
   build, image/link checks, existing API/analytics tests, and a regression
   build with conflicting preview/stale environment URLs.
 - Browser review of the local homepage confirmed the existing layout,
@@ -79,8 +83,11 @@ subsequently added to reduce transfers while preserving the same photographs.
 - The initial mobile PageSpeed test scored 63 performance, 100 accessibility,
   100 best practices, and 100 basic SEO, with 8.1-second LCP, 80-ms TBT, and
   zero CLS under simulated slow 4G. Its image-delivery finding prompted the
-  AVIF/responsive and gallery-fetch changes above. A new live report is
-  required after those delivery changes deploy. No field Core Web Vitals
+  AVIF/responsive and gallery-fetch changes above. The image-delivery retest
+  reduced estimated image waste from 724 KiB to 117 KiB, with 7.6-second
+  LCP and the same 63 performance score. It identified 464 KiB of early
+  Google Maps code, prompting strict map deferral and stylesheet inlining.
+  A new live report is required after those last changes deploy. No field Core Web Vitals
   pass is asserted: PageSpeed did not have sufficient real-user data.
 
 ## Remaining account-level checks

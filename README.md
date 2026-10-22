@@ -14,6 +14,8 @@ Dependency-free static HTML, CSS and JavaScript, with a Node.js build script and
 - `tests/`: asset/link/metadata checks and simulated API integration tests.
 - `dist/`: generated static output, intentionally ignored by Git.
 
+The production builder inlines the unchanged `site.css` into the homepage to remove a render-blocking round trip. Keep editing that CSS file as before. The map loads as visitors approach the visit section, with an iframe fallback for visitors without JavaScript; its address and directions links remain ordinary HTML.
+
 ## Local use
 
 Requires Node.js 22 or later and npm. There are no third-party packages to install.

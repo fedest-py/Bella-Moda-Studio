@@ -9,8 +9,11 @@ const url = new URL('https://bellamodastudionyc.com');
 await rm(output, {recursive:true, force:true});
 await mkdir(output, {recursive:true});
 await cp(resolve(root, 'web'), output, {recursive:true});
+const stylesheet = await readFile(resolve(output, 'assets/site.css'), 'utf8');
 for (const page of ['index.html', 'information.html', '404.html']) {
-  const html = (await readFile(resolve(output, page), 'utf8')).replaceAll('{{SITE_URL}}', url.origin);
+  let html = (await readFile(resolve(output, page), 'utf8')).replaceAll('{{SITE_URL}}', url.origin);
+  // Preserve the exact existing CSS while removing a first-render round trip.
+  if (page === 'index.html') html = html.replace(/<link rel="stylesheet" href="assets\/site\.css(?:\?[^"]*)?">/, () => `<style>${stylesheet}</style>`);
   await writeFile(resolve(output, page), html);
 }
 await writeFile(resolve(output, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${url.origin}/sitemap.xml\n`);

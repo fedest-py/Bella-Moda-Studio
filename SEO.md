@@ -68,7 +68,9 @@ subsequently added to reduce transfers while preserving the same photographs.
   Google's unusual-traffic/human-verification check. Independent Google
   listing consistency and Schema Markup Validator completion remain
   unverified. Do not describe these as passed.
-- Search Console was signed out in the available browser. Index status,
+- Search Console required Google sign-in, and that sign-in request was
+  interrupted. No sitemap submission or indexing action was performed.
+  Index status,
   Google-selected canonical, sitemap submission, and organic performance
   require access to the owner's verified property. Serving a sitemap and
   listing it in robots.txt do not establish Search Console submission.
@@ -87,8 +89,13 @@ subsequently added to reduce transfers while preserving the same photographs.
   reduced estimated image waste from 724 KiB to 117 KiB, with 7.6-second
   LCP and the same 63 performance score. It identified 464 KiB of early
   Google Maps code, prompting strict map deferral and stylesheet inlining.
-  A new live report is required after those last changes deploy. No field Core Web Vitals
-  pass is asserted: PageSpeed did not have sufficient real-user data.
+  The final mobile report after those changes scored **91 performance,
+  100 accessibility, 100 best practices, and 100 basic SEO**, with 1.5-second
+  FCP, 3.4-second LCP, 60-ms TBT, 1.5-second Speed Index, and zero CLS under
+  the same simulated slow-4G device profile. LCP still has room to improve;
+  no field Core Web Vitals pass is asserted because PageSpeed did not have
+  sufficient real-user data.
+  [Final mobile report](https://pagespeed.web.dev/analysis/https-bellamodastudionyc-com/bxii2kz83m?form_factor=mobile).
 
 ## Remaining account-level checks
 

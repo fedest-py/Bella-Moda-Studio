@@ -52,7 +52,7 @@
       if (!response.ok) return;
       const data = await response.json();
       if (!data.connected) return; // Keep the explicitly dated, user-confirmed fallback.
-      renderHours(data.hours);
+      const refreshedHours = renderHours(data.hours);
       if (Number.isFinite(data.rating) && data.rating >= 1 && data.rating <= 5) {
         document.querySelector('.rating-value').textContent = data.rating.toFixed(1);
         document.querySelector('.stars-filled').style.width = `${data.rating / 5 * 100}%`;
@@ -68,7 +68,12 @@
       renderAttributions(data.attributions);
       // Avoid leaving obsolete regular hours in metadata after a live refresh.
       const schema = document.querySelector('script[type="application/ld+json"]');
-      if (schema) { const metadata = JSON.parse(schema.textContent); delete metadata.openingHours; schema.textContent = JSON.stringify(metadata); }
+      if (schema && refreshedHours) {
+        const metadata = JSON.parse(schema.textContent);
+        delete metadata.openingHours;
+        delete metadata.openingHoursSpecification;
+        schema.textContent = JSON.stringify(metadata);
+      }
     } catch { /* The page remains usable with the confirmed hours and dated rating. */ }
     finally { window.clearTimeout(timeout); }
   }

@@ -27,7 +27,7 @@ npm run preview
 
 Preview is at http://localhost:4173. The local preview supports the same Google endpoint, using environment variables from the shell. `.env` is a reference only and is not automatically loaded. For local secrets, Node supports `node --env-file=.env scripts/serve.mjs`.
 
-## Cloudflare Pages settings (not deployed)
+## Cloudflare Pages settings
 
 Connect this repository using **Workers & Pages → Pages → Connect to Git**.
 
@@ -40,13 +40,13 @@ Connect this repository using **Workers & Pages → Pages → Connect to Git**.
 | Build output directory | dist |
 | Node version | 22 (provided by .node-version) |
 
-Use Pages Git integration: it detects the root `functions/` folder and deploys the function alongside static files. Uploading only dist through a drag-and-drop uploader does not include the function. `_routes.json` limits function invocation to `/api/google-profile`; normal pages and images remain static. No deployment workflow or host account is configured in this repository.
+The existing Cloudflare Pages Git integration detects the root `functions/` folder and deploys the function alongside static files. Uploading only dist through a drag-and-drop uploader does not include the function. `_routes.json` limits function invocation to `/api/google-profile`; normal pages and images remain static.
 
 ## Environment variables
 
 **None are required for the current page, map, directions, photographs or displayed fallback hours/rating.**
 
-- `SITE_URL` (optional build variable): the final HTTPS origin, e.g. `https://your-domain.com`, without a path. Set this when the production address is known for stable canonical, Open Graph and sitemap URLs. Otherwise the build uses Cloudflare's `CF_PAGES_URL`; local builds use localhost. Rebuild after changing it.
+- Canonical, Open Graph, structured-data and sitemap URLs always use `https://bellamodastudionyc.com`, including in preview builds. `SITE_URL` and Cloudflare's `CF_PAGES_URL` do not override this: a deployment URL must not replace the public business domain. `bellamodanyc.com` is used for business email and is not the website's canonical domain.
 - `GOOGLE_PLACES_API_KEY` (optional server-side secret): restricted to Places API (New).
 - `GOOGLE_PLACE_ID` (optional server-side value): the verified Bella listing ID at the exact Ditmars address.
 
@@ -56,7 +56,7 @@ The address-based Google Maps iframe is independent of that endpoint and needs n
 
 ## Future updates
 
-This repository is the master. Edit it and commit to its existing history; do not create disconnected copies. After you connect Cloudflare Pages, pushes to its production branch can trigger deployment under your Pages settings. Custom domain registration/DNS and the initial Pages connection remain manual until authorized.
+This repository is the master. Edit it and commit to its existing history; do not create disconnected copies. Pushes to `main` trigger the existing Cloudflare Pages production deployment. The public website is `https://bellamodastudionyc.com`. See `SEO.md` for the Astoria SEO implementation and external validation status.
 
 ## Verification
 

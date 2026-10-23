@@ -1,4 +1,4 @@
-# Astoria SEO implementation — October 22, 2026
+# Astoria SEO implementation — October 22–23, 2026
 
 Scope: the single Astoria–Ditmars store. The website remains at
 https://bellamodastudionyc.com. No other store or location page was added.
@@ -68,12 +68,10 @@ subsequently added to reduce transfers while preserving the same photographs.
   Google's unusual-traffic/human-verification check. Independent Google
   listing consistency and Schema Markup Validator completion remain
   unverified. Do not describe these as passed.
-- Search Console required Google sign-in, and that sign-in request was
-  interrupted. No sitemap submission or indexing action was performed.
-  Index status,
-  Google-selected canonical, sitemap submission, and organic performance
-  require access to the owner's verified property. Serving a sitemap and
-  listing it in robots.txt do not establish Search Console submission.
+- Search Console sign-in was completed on October 23. The URL-prefix
+  property, sitemap submission, live inspection, and indexing request were
+  completed as recorded below. Actual inclusion in Google's index and the
+  Google-selected canonical remain pending a new indexing cycle.
 - Cloudflare successfully deployed the SEO change (`c42c215`), and the live
   homepage, robots.txt, and sitemap were checked: all use the business domain.
 - Google's smartphone Rich Results Test crawled the live homepage successfully
@@ -97,27 +95,60 @@ subsequently added to reduce transfers while preserving the same photographs.
   sufficient real-user data.
   [Final mobile report](https://pagespeed.web.dev/analysis/https-bellamodastudionyc-com/bxii2kz83m?form_factor=mobile).
 
-## Remaining account-level checks
+## Search Console — October 23, 2026
 
-1. In Search Console, inspect `https://bellamodastudionyc.com/`, test the live
-   URL, confirm indexing eligibility and the declared canonical, and request
-   indexing after the corrected version is live.
-2. Submit or refresh `https://bellamodastudionyc.com/sitemap.xml`. Confirm
-   successful processing and check Page indexing for exclusions/errors.
-3. Compare regular hours, phone, address, and the profile link against the
+- Added `https://bellamodastudionyc.com/` as a URL-prefix property in the
+  owner's Google account. Google automatically verified ownership through
+  the existing Google Analytics tag. No DNS or website changes were needed.
+- Submitted `https://bellamodastudionyc.com/sitemap.xml`. Search Console
+  confirmed successful submission and processing: **Success**, one
+  discovered page, zero discovered videos, submitted/read October 23.
+- The stored index inspection exposed the consequence of the old canonical:
+  the homepage was **not indexed**, with reason **Alternate page with proper
+  canonical tag**. Google's last recorded crawl was October 16. That old
+  crawl declared `https://72aa69e7.bella-moda-studio.pages.dev/`; Google
+  selected `https://e60893cb.bella-moda-studio.pages.dev/` as canonical.
+- Ran Search Console's live smartphone URL test on the corrected homepage.
+  Result: **URL is available to Google / Page can be indexed**. Crawl
+  allowed: **Yes**; page fetch: **Successful**; indexing allowed: **Yes**.
+  The live user-declared canonical is now
+  `https://bellamodastudionyc.com/`. The live test cannot determine Google's
+  eventual selected canonical, and eligibility is not proof of indexing.
+- Requested indexing once. Google confirmed **Indexing requested** and that
+  the URL was added to a priority crawl queue. No repeated submissions were
+  made; the request does not guarantee inclusion or ranking.
+- The new property's Performance, Page indexing, Experience, and
+  Enhancements summaries were still processing and said to check again in
+  a day or so. No impressions, clicks, query baseline, or field Core Web
+  Vitals result is asserted from those pending reports.
+- Recurring performance reporting is not active. A compatible Windsor.ai
+  integration was identified and suggested, but it is not installed or
+  connected. No automated report was created without a working data
+  connection. The completed browser checks are separate from that optional
+  reporting connection.
+
+## Remaining checks and monitoring
+
+1. After Google recrawls, confirm the homepage is indexed and Google's
+   selected canonical is the business domain. Review the Page indexing
+   report once processing completes; today's accepted request is not a
+   completed indexing result.
+2. Compare regular hours, phone, address, and the profile link against the
    Astoria Google Business Profile; update both sources together if needed.
-4. Confirm DNS/TLS and redirects for any configured `www` or alternate
+   Complete Schema Markup Validator if its human-verification block clears.
+3. Confirm DNS/TLS and redirects for any configured `www` or alternate
    website domain in Cloudflare. Those hosts could not be reliably reached
    during the audit, so duplicate-site hosting was not established. Keep
    `bellamodanyc.com` for email unless the owner separately chooses to use it
    as a website alias. Cloudflare Pages `_redirects` does not support
    domain-level redirects; use Cloudflare's domain redirect feature when
    needed. Do not add an unsupported `_redirects` rule or change DNS blindly.
-5. Compare Search Console's last 28 days against the previous period monthly:
+4. Compare Search Console's last 28 days against the previous period monthly:
    organic impressions, clicks, CTR, landing pages, and actual queries,
    especially Astoria/Queens/Ditmars, women's boutique, and sample-sale
    searches. Review call/directions events in GA4 as supporting conversion
-   signals. No recurring report was configured without account access.
+   signals. Recurring reports require a connected reporting integration;
+   browser sign-in alone has not configured one.
 
 The sitemap contains the one substantive public landing page. Fragment
 anchors are not separate pages, and a second Astoria landing page would
